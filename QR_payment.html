@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>QR Payment</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      color: #000000;
+      margin-top: 0cm;
+    }
+
+    .timer {
+      font-size: 2em;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    #qr-code {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .button-container button {
+      flex-grow: 1;
+      margin: 0 5px;
+    }
+
+    .instructions {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    #technation {
+      justify-content: start;
+      margin-top: -7cm;
+      margin-left: -8cm;
+      color: #000000;
+    }
+    #img {
+      max-height: 200px;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<header>
+  <h1 id="technation">TechNation</h1>
+</header>
+<body>
+<div class="container">
+  <h1>QR Payment</h1>
+  <div class="timer" id="timer">05:00</div>
+  <img id="img" src="img/QR_TechNation.jpg" alt="QR code">
+  <div><p>UPI I'd : </p></div>
+  <div class="button-container">
+    <button onclick="scanQRCode()" style="background-color: #007bff; color: #fff;">Scan QR Code</button>
+    <button onclick="resetTimer()">Cancel</button>
+  </div>
+
+  <p class="instructions">Please scan QR code with your mobile by using Mobile Banking Application.</p>
+</div>
+
+<script>
+  let timer = 300; // 5 minutes in seconds
+
+  function updateTimer() {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    document.getElementById('timer').innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+
+  function scanQRCode() {
+    // Add your logic for scanning QR code here
+    // You might want to stop or reset the timer after successful scan
+  }
+
+  function resetTimer() {
+    timer = 300; // Reset timer to 5 minutes
+    updateTimer();
+  }
+
+  setInterval(function () {
+    if (timer > 0) {
+      timer--;
+      updateTimer();
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
